@@ -1,0 +1,12 @@
+:root {
+    --white: #F7F7F7;
+    --beige: #F2E7D5;
+    --teal: #6D9886;
+    --black: #393E46;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0px;
+    background: beige;
+}
