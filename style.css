@@ -5,8 +5,54 @@
     --black: #393E46;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Poppins", sans-serif;
     margin: 0px;
     background: beige;
+}
+
+header {
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;
+    align-items: center;
+    box-shadow: var(--teal) 0px 20px 30px -10px;
+}
+
+.links {
+    display: flex;
+    list-style-type: none;
+    width: 50%;
+    justify-content: space-evenly;
+    font-size: 1.5em;
+    gap: 1.3em;
+}
+
+ul li {
+    transition: all 200ms ease-in-out;
+}
+
+a {
+    color: black;
+}
+
+
+header img {
+    object-fit: contain;
+    height: 100%;
+}
+
+.material-symbols-outlined {
+    font-size: 1.5em;
+}
+
+ul li:hover {
+    transform: scale(1.2);
 }
