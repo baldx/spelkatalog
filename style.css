@@ -35,7 +35,7 @@ header {
     gap: 1.3em;
 }
 
-ul li {
+.links li {
     transition: all 200ms ease-in-out;
 }
 
@@ -53,7 +53,7 @@ header img {
     font-size: 1.5em;
 }
 
-ul li:hover {
+.links li:hover {
     transform: scale(1.2);
 }
 
@@ -71,4 +71,33 @@ main {
     padding-top: 40%;
     margin-top: 1em;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+.about-us, .about-us .top {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us .bottom {
+    margin-top: 2em;
+    display: flex;
+    height: 40vh;
+    width: 100vw;
+    justify-content: space-evenly;
+
+}
+
+.bottom li {
+    text-align: center;
+}
+
+.bottom li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 30%;
 }
