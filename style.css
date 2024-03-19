@@ -20,6 +20,7 @@ header {
     height: 15vh;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-left: 2em;
     padding-right: 2em;
     align-items: center;
@@ -30,6 +31,8 @@ header {
     display: flex;
     list-style-type: none;
     width: 50%;
+    height: 100%;
+    align-items: center;
     justify-content: space-evenly;
     font-size: 1.5em;
     gap: 1.3em;
@@ -41,6 +44,7 @@ header {
 
 a {
     color: black;
+    text-decoration: underline;
 }
 
 
@@ -58,7 +62,7 @@ header img {
 }
 
 main {
-    height: 85vh;
+    height: 150vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -101,3 +105,35 @@ main {
     justify-content: start;
     width: 30%;
 }
+
+footer {
+    padding-top: 2em;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--beige);
+}
+
+.support-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2em;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.support-info p {
+    width: 70%;
+}
+
+form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-primary {
+    background: var(--teal);
+}
+
