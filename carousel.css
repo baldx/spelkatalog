@@ -84,6 +84,7 @@
     counter-reset: item;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    padding-left: 0px;
   }
   
   .carousel__slide {
