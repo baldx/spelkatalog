@@ -12,12 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 })
 
-// const formOutline = document.querySelectorAll('.form-outline');
-// const labels = document.querySelectorAll('label');
+const input = document.querySelectorAll('.form-control'); //get all inputs
 
-// const dataInput = document.querySelectorAll('data-input');
+input.forEach(input => { //iterates over all elements of input array
+    input.addEventListener('input', (event) => { //for each element, theres event listener
+        const currentInput = event.target; //references the event
+        const currentLabel = currentInput.nextElementSibling; // references the next sibling aka label
 
-
-// formOutline.forEach(e => e.addEventListener('click', () => {
-//     labels.forEach(label => label.remove())
-// }));
+        if (currentInput.value.trim() === '') currentLabel.style.display = 'block'; // if no input return label being visible
+        else currentLabel.style.display = 'none'; //else hide it
+    })
+})
