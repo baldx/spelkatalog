@@ -34,16 +34,68 @@
         <img src="./assets/black-logo.png" class="header-logo">
         <ul class="links">
             <li><span class="material-symbols-outlined">light_mode</span></li>
-            <li><a href="#about-us-section" class="about-link">About</a></li>
-            <li><a href="index.html">Home</a></li> <!--fix links with js-->
+            <li><a href="index.html" class="about-link">About</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="#support">Support</a></li>
         </ul>
     </header>
     
-    <main>
-        <div class="game">
-            <img src="" alt="">
-        </div>
+    <main class="game-catalog">
+        <a href="/games/TicTacToe.html" class="game">
+            <img src="/assets/Tic_tac_toe.svg.png" alt="">
+            <p>Tic Tac Toe is a simple two-player game played on a 3x3 grid. Players take turns marking spaces with "X" or "O" to form a line horizontally, vertically, or diagonally to win. <u>Play here</u></p>
+        </a>
+
+        <section class="game">
+            <img src="/assets/Tic_tac_toe.svg.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet laborum adipisci accusantium distinctio maiores, ullam temporibus vel blanditiis non aut aliquam nesciunt ex beatae iure at quae odit officiis? Ex!</p>
+        </section>
+
+        <section class="game">
+            <img src="/assets/Tic_tac_toe.svg.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet laborum adipisci accusantium distinctio maiores, ullam temporibus vel blanditiis non aut aliquam nesciunt ex beatae iure at quae odit officiis? Ex!</p>
+        </section>
+
+        <section class="game">
+            <img src="/assets/Tic_tac_toe.svg.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet laborum adipisci accusantium distinctio maiores, ullam temporibus vel blanditiis non aut aliquam nesciunt ex beatae iure at quae odit officiis? Ex!</p>
+        </section>
     </main>
+
+    <footer id="support">
+        <section class="support-info">
+            <h1>Support</h1>
+            <p>Got questions or need assistance? Our dedicated support team is 
+                here to help you! Whether it's troubleshooting, inquiries about 
+                our services, or feedback you'd like to share, feel free to get 
+                in touch using the contact form below. We're committed to providing 
+                you with the best support experience.
+            </p>
+        </section>  
+        <form>
+            <!-- Name input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="form4Example1" class="form-control" data-input="0"/>
+              <label class="form-label" for="form4Example1" data-label="0">Name</label>
+            </div>
+          
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="form4Example2" class="form-control" data-input="1" />
+              <label class="form-label" for="form4Example2" data-label="1">Email address</label>
+            </div>
+          
+            <!-- Message input -->
+            <div class="form-outline mb-4">
+              <textarea class="form-control" id="form4Example3" rows="4" data-input="2"></textarea>
+              <label class="form-label" for="form4Example3" data-label="2">Message</label>
+            </div>
+          
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">
+              Send
+            </button>
+          </form>
+    </footer>
 </body>
 </html>
