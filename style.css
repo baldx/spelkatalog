@@ -176,12 +176,12 @@ small {
 }
 
 .tic-tac-toe-main  {
-    border: 1px solid red;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 2em;
 }
 
 .grid {
@@ -190,19 +190,37 @@ small {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    background: black;
+    background: var(--black);
     gap: 2px;
+    border-radius: 5px;
 }
 
 .cell {
-    background: white;
     transition: 50ms ease-in-out;
     font-size: 4em;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
+    background: var(--teal);
 }
 
 .cell:hover {
     background: var(--white);
+}
+
+.restart {
+    display: none;
+    border: 3px solid var(--black);
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 1.5em;
+    background: var(--teal);
+    color: var(--white);
+    width: 10%;
+    transition: all 150ms ease-in-out;
+}
+
+.restart:hover {
+    transform: scale(1.1);
 }
