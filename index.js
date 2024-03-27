@@ -27,9 +27,10 @@ input.forEach(input => { //iterates over all elements of input array
 //Code of Tic Tac Toe
 
 class createPlayer { //class for player
-    constructor(name, mark) {
+    constructor(name, mark, winner = false) {
         this.name = name;
         this.mark = mark;
+        this.winner = winner;
     }
 }
 
@@ -67,6 +68,15 @@ function getComputerSelection (board) { //create computer selection
     else return getComputerSelection(board); //if not repeat the process
 }
 
+function displayStatuts() {
+    if (turns === 9 && winner === false) {
+        status.innerHTML = 'Tie!'
+        restartBtn.style.display = 'block'
+    }
+    if (player.winner === true) return status.innerHTML = 'Player Won!'
+    if (computer.winner === true) return status.innerHTML = 'Computer Won!'
+}
+
 const game = (() => { //game logic
     "use strict";
 
@@ -80,9 +90,8 @@ const game = (() => { //game logic
                 currentPlayer = computer;
                 turns++;
                 status.innerHTML = 'Computers turn!'
-                checkWinner()
-                console.log(turns);
-            } 
+                checkWinner();
+                displayStatuts();            } 
             
             if (!winner && currentPlayer === computer) {
                 setTimeout(() => {
@@ -94,14 +103,9 @@ const game = (() => { //game logic
                         currentPlayer = player;
                         turns++;
                         status.innerHTML = 'Players turn!'
-                        checkWinner()
-                        console.log(turns);
-                    }
+                        checkWinner();
+                        displayStatuts();                    }
                 },1000)
-            }
-
-            if (turns === 9 && !winner) {
-                status.innerHTML = 'Its a tie!'
             }
             
             /*else if (cell.innerHTML === '' && cell.innerHTML !== 'X' && winner === false && currentPlayer === computer) {
@@ -133,11 +137,13 @@ function checkWinner () {
         if (gameBoard[index[0]] === player.mark && gameBoard[index[1]] === player.mark && gameBoard[index[2]] === player.mark) { //checks condition if first, second, third element in child array have the same mark
             status.innerHTML === `${player.name} won the game`
             winner = true;
+            player.winner = true;
             restartBtn.style.display = 'block'
         } else if (gameBoard[index[0]] === computer.mark && gameBoard[index[1]] === computer.mark && gameBoard[index[2]] === computer.mark) {
             status.innerHTML === `${computer.name} won the game`
             winner = true;
             restartBtn.style.display = 'block'
+            computer.winner = true;
         }
     })
 }
