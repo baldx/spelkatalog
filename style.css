@@ -238,3 +238,32 @@ small {
 .restart:hover {
     transform: scale(1.1);
 }
+
+.rock-paper-scissors-main {
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rock-paper-scissors-main img {
+    height: 300px;
+    object-fit: cover;
+    transition: all 200ms ease-in-out;
+    border-radius: 10px;
+}
+
+.rock-paper-scissors-main img:hover {
+    transform: scale(1.1);
+    background: var(--black);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.selection-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+}
