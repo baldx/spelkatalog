@@ -13,7 +13,21 @@ body {
     font-family: "Poppins", sans-serif;
     margin: 0px;
     background: beige;
+    overflow-x: hidden;
 }
+
+*::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: none;
+  }
 
 header {
     width: 100vw;
