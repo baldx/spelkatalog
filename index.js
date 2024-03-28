@@ -1,36 +1,36 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//     const scrollAboutUs = document.querySelector('.about-link'); //get .about-links
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollAboutUs = document.querySelector('.about-link'); //get .about-links
     
-//     scrollAboutUs.addEventListener("click", e => { //click event to all links
-//         e.preventDefault();
-//         const target = scrollAboutUs.getAttribute('href').substring(1); //targets the href attribute but removes the string before
-//         const targetElement = document.getElementById(target); //targets the element
+    scrollAboutUs.addEventListener("click", e => { //click event to all links
+        e.preventDefault();
+        const target = scrollAboutUs.getAttribute('href').substring(1); //targets the href attribute but removes the string before
+        const targetElement = document.getElementById(target); //targets the element
 
-//         if (targetElement) { //if element exist
-//             targetElement.scrollIntoView({ behavior: "smooth" }); //scroll to element
-//         }
-//     })
-// })
+        if (targetElement) { //if element exist
+            targetElement.scrollIntoView({ behavior: "smooth" }); //scroll to element
+        }
+    })
+})
 
-// const input = document.querySelectorAll('.form-control'); //get all inputs
+const input = document.querySelectorAll('.form-control'); //get all inputs
 
-// input.forEach(input => { //iterates over all elements of input array
-//     input.addEventListener('input', (event) => { //for each element, theres event listener
-//         const currentInput = event.target; //references the event
-//         const currentLabel = currentInput.nextElementSibling; // references the next sibling aka label
+input.forEach(input => { //iterates over all elements of input array
+    input.addEventListener('input', (event) => { //for each element, theres event listener
+        const currentInput = event.target; //references the event
+        const currentLabel = currentInput.nextElementSibling; // references the next sibling aka label
 
-//         if (currentInput.value.trim() === '') currentLabel.style.display = 'block'; // if no input return label being visible
-//         else currentLabel.style.display = 'none'; //else hide it
-//     })
-// })
+        if (currentInput.value.trim() === '') currentLabel.style.display = 'block'; // if no input return label being visible
+        else currentLabel.style.display = 'none'; //else hide it
+    })
+})
 
-// const restartBtn = document.querySelector('.restart');
-// restartBtn.addEventListener('click', () => { // code to reload a page, used for restarting games
-//     location.reload()
-// })
+const restartBtn = document.querySelector('.restart');
+restartBtn.addEventListener('click', () => { // code to reload a page, used for restarting games
+    location.reload()
+})
 
 
-//Code of Tic Tac Toe
+// Tic Tac Toe
 
 function ticTacToe () {
     class createPlayer { //class for player
@@ -181,20 +181,19 @@ function rockPaperScissors () {
         return computer;
     }
 
-    allSelection.forEach((e, index) => {
+    allSelection.forEach((e, index) => { //logic for when player selects a card
         e.addEventListener('click', () => {
             if (winner === false && currentPlayer === player && player.score < 5) {
-                player.selection = allSelection[index].className;
-                checkCondition(player, getComputerSelection())
-                console.log(player.selection, computer.selection);
-                playerScore.innerHTML = player.score
+                player.selection = allSelection[index].className; //sets player selection equals to the card they chose
+                checkCondition(player, getComputerSelection()) //gives the parameters in and checks the condition, and returns something
+                playerScore.innerHTML = player.score//change score
                 computerScore.innerHTML = computer.score
-                checkWinner()
+                checkWinner() //check for winner after every play
             }
         })
     })
 
-    function checkWinner () {
+    function checkWinner () { //check for winner
         if (player.score === 5) {
             gameFeedback.innerHTML = 'Player won the game! :)'
             restartBtn.style.display = 'block'
@@ -209,7 +208,7 @@ function rockPaperScissors () {
     }
 
 
-    function checkCondition(player, computer) {
+    function checkCondition(player, computer) { //checks conditions
         if (player.selection === 'Rock' && computer.selection === 'Scissors') {
             gameFeedback.innerHTML = 'Won this round :)'
             return player.score++;
@@ -234,23 +233,43 @@ function rockPaperScissors () {
     }
 };
 
+// Guess the number
+
 function numberGuessing () {
-    const guessInput = document.querySelector('number-input');
-    const feedback = document.querySelector('.feedback');
+    const feedback = document.querySelector('.feedback');//fetch stuff
 
     const minInput = document.querySelector('#min-number');
     const maxInput = document.querySelector('#max-number');
+
     const submitParameters = document.querySelector('.submit-parameters');
+
     const parameterForm = document.querySelector('.parameters')
     const guessingForm = document.querySelector('.number-guessing');
+    
+    const submitGuess = document.querySelector('.submit-guess');
+    const numberInput = document.querySelector('.number-input');
 
-    submitParameters.addEventListener('click', (e) => {
-        console.log(guessNumberLogic(minInput.value, maxInput.value));
-        e.preventDefault();
+    let randomNumber;
+
+    submitParameters.addEventListener('click', (e) => { //logic for what happens after clicking the button for submitting parameters
+        randomNumber = guessNumberLogic(minInput.value, maxInput.value) //randomNumber = to the function that has min input and max inputs values passed in as parameters
+        console.log(randomNumber);
+        e.preventDefault(); //prevents the default refreshing of the page after submitting a form
         parameterForm.style.display = 'none'
-        guessingForm.style.display = 'flex';
-        
+        guessingForm.style.display = 'flex'; //changes styles
+    });
+
+    submitGuess.addEventListener('click', (e) => { //logic for submitting guess
+        e.preventDefault();
+        if (numberInput.value < randomNumber) return feedback.innerHTML = 'Guess higher!'
+        if (numberInput.value > randomNumber) return feedback.innerHTML = 'Guess lower!'
+        if (numberInput.value == randomNumber) {
+            restartBtn.style.display = 'block'
+            return feedback.innerHTML = 'You guessed right!' //the game logic with guess
+        }
     })
+
+
 
     function guessNumberLogic(min, max) {
         
@@ -258,5 +277,3 @@ function numberGuessing () {
     }
 
 }
-
-numberGuessing();
