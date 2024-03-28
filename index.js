@@ -214,7 +214,7 @@ const rockPaperScissors = (() => {
             gameFeedback.innerHTML = 'Won this round :)'
             return player.score++;
         } else if (player.selection === 'Scissors' && computer.selection === 'Paper') {
-            gameFeedback.innerHTML = 'Scissors beats rock! :)'
+            gameFeedback.innerHTML = 'Scissors beats paper! :)'
             return player.score++;
         } else if (player.selection === 'Paper' && computer.selection === 'Rock') {
             gameFeedback.innerHTML = 'Going mad! :)'
