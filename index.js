@@ -1,160 +1,160 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const scrollAboutUs = document.querySelector('.about-link'); //get .about-links
+// document.addEventListener("DOMContentLoaded", () => {
+//     const scrollAboutUs = document.querySelector('.about-link'); //get .about-links
     
-    scrollAboutUs.addEventListener("click", e => { //click event to all links
-        e.preventDefault();
-        const target = scrollAboutUs.getAttribute('href').substring(1); //targets the href attribute but removes the string before
-        const targetElement = document.getElementById(target); //targets the element
+//     scrollAboutUs.addEventListener("click", e => { //click event to all links
+//         e.preventDefault();
+//         const target = scrollAboutUs.getAttribute('href').substring(1); //targets the href attribute but removes the string before
+//         const targetElement = document.getElementById(target); //targets the element
 
-        if (targetElement) { //if element exist
-            targetElement.scrollIntoView({ behavior: "smooth" }); //scroll to element
-        }
-    })
-})
+//         if (targetElement) { //if element exist
+//             targetElement.scrollIntoView({ behavior: "smooth" }); //scroll to element
+//         }
+//     })
+// })
 
-const input = document.querySelectorAll('.form-control'); //get all inputs
+// const input = document.querySelectorAll('.form-control'); //get all inputs
 
-input.forEach(input => { //iterates over all elements of input array
-    input.addEventListener('input', (event) => { //for each element, theres event listener
-        const currentInput = event.target; //references the event
-        const currentLabel = currentInput.nextElementSibling; // references the next sibling aka label
+// input.forEach(input => { //iterates over all elements of input array
+//     input.addEventListener('input', (event) => { //for each element, theres event listener
+//         const currentInput = event.target; //references the event
+//         const currentLabel = currentInput.nextElementSibling; // references the next sibling aka label
 
-        if (currentInput.value.trim() === '') currentLabel.style.display = 'block'; // if no input return label being visible
-        else currentLabel.style.display = 'none'; //else hide it
-    })
-})
+//         if (currentInput.value.trim() === '') currentLabel.style.display = 'block'; // if no input return label being visible
+//         else currentLabel.style.display = 'none'; //else hide it
+//     })
+// })
 
-const restartBtn = document.querySelector('.restart');
-restartBtn.addEventListener('click', () => { // code to reload a page, used for restarting games
-    location.reload()
-})
+// const restartBtn = document.querySelector('.restart');
+// restartBtn.addEventListener('click', () => { // code to reload a page, used for restarting games
+//     location.reload()
+// })
 
 
 //Code of Tic Tac Toe
 
-// const ticTacToe = (() => {
-//     class createPlayer { //class for player
-//         constructor(name, mark, winner = false) {
-//             this.name = name;
-//             this.mark = mark;
-//             this.winner = winner;
-//         }
-//     }
+function ticTacToe () {
+    class createPlayer { //class for player
+            constructor(name, mark, winner) {
+                this.name = name;
+                this.mark = mark;
+                this.winner = winner;
+            }
+        }
     
     
-//     let player = new createPlayer('Player', 'X');// create players
-//     let computer = new createPlayer('Computer', 'O');
-//     const gridContainer = document.querySelector('.grid') //fetch from DOM
-//     const status = document.querySelector('.game-status');
-//     let gameBoard = []; //create variables
-//     let winner = false;
-//     let currentPlayer = player;
-//     let turns = 0;
+    let player = new createPlayer('Player', 'X');// create players
+    let computer = new createPlayer('Computer', 'O');
+    const gridContainer = document.querySelector('.grid') //fetch from DOM
+    const status = document.querySelector('.game-status');
+    let gameBoard = []; //create variables
+    let winner = false;
+    let currentPlayer = player;
+    let turns = 0;
     
-//     const createGrid = (() => {
-//         for (let i = 0; i < 9; i++) {
-//             const grid = document.createElement('div');
-//             gridContainer.appendChild(grid);
-//             grid.setAttribute('class', 'cell')
-//             gameBoard.push('')
-//         }
-//     })(); //syntax for IIFE (Immediately Invoked Function Expression)
+    const createGrid = (() => {
+        for (let i = 0; i < 9; i++) {
+            const grid = document.createElement('div');
+            gridContainer.appendChild(grid);
+            grid.setAttribute('class', 'cell')
+            gameBoard.push('')
+        }
+    })(); //syntax for IIFE (Immediately Invoked Function Expression)
     
     
-//     function getComputerSelection (board) { //create computer selection
-//         if (!board.some(cell => cell === '')) return null; // if the board does not match empty string return null
+    function getComputerSelection (board) { //create computer selection
+        if (!board.some(cell => cell === '')) return null; // if the board does not match empty string return null
     
-//         let number = Math.floor(Math.random() * board.length); //generate random number between boards length
+        let number = Math.floor(Math.random() * board.length); //generate random number between boards length
     
         
-//         if (board[number] === '') return number; //if board is empty, return the number
-//         else return getComputerSelection(board); //if not repeat the process
-//     }
+        if (board[number] === '') return number; //if board is empty, return the number
+        else return getComputerSelection(board); //if not repeat the process
+    }
     
-//     function displayStatuts() {
-//         if (turns === 9 && winner === false) {
-//             status.innerHTML = 'Tie!'
-//             restartBtn.style.display = 'block'
-//         }
-//         if (player.winner === true) return status.innerHTML = 'Player Won!'
-//         if (computer.winner === true) return status.innerHTML = 'Computer Won!'
-//     }
+    function displayStatuts() {
+        if (turns === 9 && winner === false) {
+            status.innerHTML = 'Tie!'
+            restartBtn.style.display = 'block'
+        }
+        if (player.winner === true) return status.innerHTML = 'Player Won!'
+        if (computer.winner === true) return status.innerHTML = 'Computer Won!'
+    }
     
-//     const game = (() => { //game logic
-//         "use strict";
+    const game = (() => { //game logic
+        "use strict";
     
-//         const allCell = document.querySelectorAll('.cell');
+        const allCell = document.querySelectorAll('.cell');
     
-//         allCell.forEach((cell, index) => { //iterate through all cells
-//             cell.addEventListener('click', () => {
-//                 if (cell.innerHTML === '' && cell.innerHTML !== 'O' && !winner && currentPlayer === player) {
-//                     gameBoard.splice(index, 1, player.mark) // change the elements index of the cell with the players mark on the array
-//                     cell.innerHTML = player.mark;
-//                     currentPlayer = computer;
-//                     turns++;
-//                     status.innerHTML = 'Computers turn!'
-//                     checkWinner();
-//                     displayStatuts();            } 
+        allCell.forEach((cell, index) => { //iterate through all cells
+            cell.addEventListener('click', () => {
+                if (cell.innerHTML === '' && cell.innerHTML !== 'O' && !winner && currentPlayer === player) {
+                    gameBoard.splice(index, 1, player.mark) // change the elements index of the cell with the players mark on the array
+                    cell.innerHTML = player.mark;
+                    currentPlayer = computer;
+                    turns++;
+                    status.innerHTML = 'Computers turn!'
+                    checkWinner();
+                    displayStatuts();            } 
                 
-//                 if (!winner && currentPlayer === computer) {
-//                     setTimeout(() => {
-//                         const computerIndex = getComputerSelection(gameBoard); //get index
+                if (!winner && currentPlayer === computer) {
+                    setTimeout(() => {
+                        const computerIndex = getComputerSelection(gameBoard); //get index
     
-//                         if (computerIndex !== null) {
-//                             gameBoard.splice(computerIndex, 1, computer.mark); //update gameBoard
-//                             allCell[computerIndex].innerHTML = computer.mark; //update DOM
-//                             currentPlayer = player;
-//                             turns++;
-//                             status.innerHTML = 'Players turn!'
-//                             checkWinner();
-//                             displayStatuts();                    }
-//                     },1000)
-//                 }
+                        if (computerIndex !== null) {
+                            gameBoard.splice(computerIndex, 1, computer.mark); //update gameBoard
+                            allCell[computerIndex].innerHTML = computer.mark; //update DOM
+                            currentPlayer = player;
+                            turns++;
+                            status.innerHTML = 'Players turn!'
+                            checkWinner();
+                            displayStatuts();                    }
+                    },1000)
+                }
                 
-//                 /*else if (cell.innerHTML === '' && cell.innerHTML !== 'X' && winner === false && currentPlayer === computer) {
-//                     gameBoard.splice(index, 1, computer.mark)
-//                     cell.innerHTML = computer.mark;
-//                     currentPlayer = player;
-//                     turns++;
-//                     status.innerHTML = 'Players turn!'
-//                     checkWinner()
-//                 } else if (turns === 9) status.innerHTML = 'Tie!'*/ //logic for player vs player
-//             })
-//         })
+                /*else if (cell.innerHTML === '' && cell.innerHTML !== 'X' && winner === false && currentPlayer === computer) {
+                    gameBoard.splice(index, 1, computer.mark)
+                    cell.innerHTML = computer.mark;
+                    currentPlayer = player;
+                    turns++;
+                    status.innerHTML = 'Players turn!'
+                    checkWinner()
+                } else if (turns === 9) status.innerHTML = 'Tie!'*/ //logic for player vs player
+            })
+        })
     
-//     })(); //syntax for IIFE (Immediately Invoked Function Expression)
+    })(); //syntax for IIFE (Immediately Invoked Function Expression)
     
-//     function checkWinner () {
-//         const winPossibilities = [ //win combinations
-//             [0, 1, 2],
-//             [0, 3, 6],
-//             [0, 4, 8],
-//             [1, 4, 7],
-//             [2, 5, 8],
-//             [2, 4, 6],
-//             [3, 4, 5],
-//             [6, 7, 8]
-//         ];
+    function checkWinner () {
+        const winPossibilities = [ //win combinations
+            [0, 1, 2],
+            [0, 3, 6],
+            [0, 4, 8],
+            [1, 4, 7],
+            [2, 5, 8],
+            [2, 4, 6],
+            [3, 4, 5],
+            [6, 7, 8]
+        ];
     
-//         winPossibilities.forEach(index => { //iterate through all elements
-//             if (gameBoard[index[0]] === player.mark && gameBoard[index[1]] === player.mark && gameBoard[index[2]] === player.mark) { //checks condition if first, second, third element in child array have the same mark
-//                 status.innerHTML === `${player.name} won the game`
-//                 winner = true;
-//                 player.winner = true;
-//                 restartBtn.style.display = 'block'
-//             } else if (gameBoard[index[0]] === computer.mark && gameBoard[index[1]] === computer.mark && gameBoard[index[2]] === computer.mark) {
-//                 status.innerHTML === `${computer.name} won the game`
-//                 winner = true;
-//                 restartBtn.style.display = 'block'
-//                 computer.winner = true;
-//             }
-//         })
-//     }
-// })();
+        winPossibilities.forEach(index => { //iterate through all elements
+            if (gameBoard[index[0]] === player.mark && gameBoard[index[1]] === player.mark && gameBoard[index[2]] === player.mark) { //checks condition if first, second, third element in child array have the same mark
+                status.innerHTML === `${player.name} won the game`
+                winner = true;
+                player.winner = true;
+                restartBtn.style.display = 'block'
+            } else if (gameBoard[index[0]] === computer.mark && gameBoard[index[1]] === computer.mark && gameBoard[index[2]] === computer.mark) {
+                status.innerHTML === `${computer.name} won the game`
+                winner = true;
+                restartBtn.style.display = 'block'
+                computer.winner = true;
+            }
+        })
+    }
+};
 
 // Rock paper scissors
 
-const rockPaperScissors = (() => {
+function rockPaperScissors () {
 
     class CreatePlayer { //create class for playes
         constructor(player, selection = null, score = 0) {
@@ -232,6 +232,31 @@ const rockPaperScissors = (() => {
             return gameFeedback.innerHTML = 'Tied!';
         }
     }
-    
+};
 
-})();
+function numberGuessing () {
+    const guessInput = document.querySelector('number-input');
+    const feedback = document.querySelector('.feedback');
+
+    const minInput = document.querySelector('#min-number');
+    const maxInput = document.querySelector('#max-number');
+    const submitParameters = document.querySelector('.submit-parameters');
+    const parameterForm = document.querySelector('.parameters')
+    const guessingForm = document.querySelector('.number-guessing');
+
+    submitParameters.addEventListener('click', (e) => {
+        console.log(guessNumberLogic(minInput.value, maxInput.value));
+        e.preventDefault();
+        parameterForm.style.display = 'none'
+        guessingForm.style.display = 'flex';
+        
+    })
+
+    function guessNumberLogic(min, max) {
+        
+        return Math.floor(Math.random() * (max - min) + min) //generates number between specified values
+    }
+
+}
+
+numberGuessing();
