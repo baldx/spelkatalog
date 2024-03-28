@@ -24,6 +24,12 @@ input.forEach(input => { //iterates over all elements of input array
     })
 })
 
+const restartBtn = document.querySelector('.restart');
+restartBtn.addEventListener('click', () => { // code to reload a page, used for restarting games
+    location.reload()
+})
+
+
 //Code of Tic Tac Toe
 
 // const ticTacToe = (() => {
@@ -40,7 +46,6 @@ input.forEach(input => { //iterates over all elements of input array
 //     let computer = new createPlayer('Computer', 'O');
 //     const gridContainer = document.querySelector('.grid') //fetch from DOM
 //     const status = document.querySelector('.game-status');
-//     const restartBtn = document.querySelector('.restart');
 //     let gameBoard = []; //create variables
 //     let winner = false;
 //     let currentPlayer = player;
@@ -55,9 +60,6 @@ input.forEach(input => { //iterates over all elements of input array
 //         }
 //     })(); //syntax for IIFE (Immediately Invoked Function Expression)
     
-//     restartBtn.addEventListener('click', () => { //restarts game
-//         location.reload()
-//     })
     
 //     function getComputerSelection (board) { //create computer selection
 //         if (!board.some(cell => cell === '')) return null; // if the board does not match empty string return null
@@ -154,7 +156,7 @@ input.forEach(input => { //iterates over all elements of input array
 
 const rockPaperScissors = (() => {
 
-    class CreatePlayer {
+    class CreatePlayer { //create class for playes
         constructor(player, selection = null, score = 0) {
             this.player = player;
             this.selection = selection;
@@ -163,48 +165,72 @@ const rockPaperScissors = (() => {
     }
 
     const player = new CreatePlayer('Player')
-    const computer = new CreatePlayer('Computer')
+    const computer = new CreatePlayer('Computer') //create players
     let currentPlayer = player;
     let winner = false;
-    const playerScore = document.querySelector('.player-score')
+    const playerScore = document.querySelector('.player-score') //fetch to display score
     const computerScore = document.querySelector('.computer-score')
+    const gameFeedback = document.querySelector('.game-feedback');
 
-    const allSelection = document.querySelectorAll('.selection-container > img');
+    const allSelection = document.querySelectorAll('.selection-container > img'); // fetch all selections
 
-    function getComputerSelection () {
-        const getNumber = Math.floor(Math.random() * allSelection.length);
-        computer.selection = allSelection[getNumber].className
+    function getComputerSelection () { // create computer selection
+        const getNumber = Math.floor(Math.random() * allSelection.length); //generate number between 1-3
+        computer.selection = allSelection[getNumber].className //get the item
 
-        return computer.selection;
+        return computer;
     }
 
     allSelection.forEach((e, index) => {
         e.addEventListener('click', () => {
-            if (winner === false && currentPlayer === player && player.score <= 5) {
+            if (winner === false && currentPlayer === player && player.score < 5) {
                 player.selection = allSelection[index].className;
-                currentPlayer = computer;
-                checkCondition(player, computer)
-                playerScore.textContent = player.score
-            }
-            if (winner === false && currentPlayer === computer && computer.score <= 5) {
-                setTimeout(() => {
-                    getComputerSelection();
-                    currentPlayer = player;
-                    checkCondition(player, computer)
-                    computerScore.textContent = computer.score
-                }, 1000)
+                checkCondition(player, getComputerSelection())
+                console.log(player.selection, computer.selection);
+                playerScore.innerHTML = player.score
+                computerScore.innerHTML = computer.score
+                checkWinner()
             }
         })
     })
 
+    function checkWinner () {
+        if (player.score === 5) {
+            gameFeedback.innerHTML = 'Player won the game! :)'
+            restartBtn.style.display = 'block'
+            return winner = true;
+        } 
+
+        if (computer.score === 5) {
+            gameFeedback.innerHTML = 'Computer won the game! :('
+            restartBtn.style.display = 'block'
+            return winner = true;
+        } 
+    }
+
+
     function checkCondition(player, computer) {
-        if (player.selection === 'Rock' && computer.selection === 'Scissors') return player.score++;
-        else if (player.selection === 'Scissors' && computer.selection === 'Paper') return player.score++;
-        else if (player.selection === 'Paper' && computer.selection === 'Rock') return player.score++;
-        else if (player.selection === 'Rock' && computer.selection === 'Paper') return computer.score++;
-        else if (player.selection === 'Scissors' && computer.selection === 'Rock') return computer.score++;
-        else if (player.selection === 'Paper' && computer.selection === 'Scissors') return computer.score++;
-        else return "Draw"; 
+        if (player.selection === 'Rock' && computer.selection === 'Scissors') {
+            gameFeedback.innerHTML = 'Won this round :)'
+            return player.score++;
+        } else if (player.selection === 'Scissors' && computer.selection === 'Paper') {
+            gameFeedback.innerHTML = 'Scissors beats rock! :)'
+            return player.score++;
+        } else if (player.selection === 'Paper' && computer.selection === 'Rock') {
+            gameFeedback.innerHTML = 'Going mad! :)'
+            return player.score++;
+        } else if (player.selection === 'Rock' && computer.selection === 'Paper') {
+            gameFeedback.innerHTML = 'Oops, lost this time! :('
+            return computer.score++;
+        } else if (player.selection === 'Scissors' && computer.selection === 'Rock') {
+            gameFeedback.innerHTML = 'Computer beats player! :('
+            return computer.score++;
+        } else if (player.selection === 'Paper' && computer.selection === 'Scissors') {
+            gameFeedback.innerHTML = 'AI diff! :('
+            return computer.score++;
+        } else {
+            return gameFeedback.innerHTML = 'Tied!';
+        }
     }
     
 
