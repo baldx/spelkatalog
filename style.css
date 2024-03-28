@@ -267,3 +267,58 @@ small {
     justify-content: center;
     gap: 3em;
 }
+
+.number-guessing-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.number-guessing-main .number-guessing {
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.number-guessing-main .number-guessing > * {
+    width: 80%;
+}
+
+.number-guessing-main form button {
+    width: 60%;
+    border: 2px solid var(--black);
+    background: var(--teal);
+    border-radius: 5px;
+    transition: all 200ms ease-in-out;
+}
+
+.number-guessing-main form button:hover,  .number-guessing-main form input:focus {
+    transform: scale(1.05);
+}
+
+.number-guessing-main form input {
+    border: 2px solid var(--black);
+    background: var(--white);
+    border-radius: 5px;
+    padding: 4px;
+    transition: all 200ms ease-in-out;
+}
+
+.parameters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.parameters section > * {
+    margin: 8px;
+}
+
+legend {
+    text-align: center;
+}
