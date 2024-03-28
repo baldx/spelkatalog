@@ -83,20 +83,14 @@ header img {
     margin-bottom: 2em;
 }
 
-.carousel {
-    width: 80vw;
-    height: 10vh;
-    padding-top: 40%;
-    margin-top: 1em;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
-}
-
 .about-us, .about-us .top {
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    margin-top: 1em;
 }
 
 .about-us .bottom {
@@ -153,10 +147,6 @@ form {
 
 small {
     text-align: center;
-}
-
-.carousel__viewport {
-    margin-bottom: 0px;
 }
 
 .game img {
@@ -321,4 +311,21 @@ small {
 
 legend {
     text-align: center;
+}
+
+#carouselExampleAutoplaying {
+   background: var(--teal);
+}
+
+.carousel {
+    width: 80vw;
+    margin-top: 1em;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    border-radius: 10px;
+}
+
+.d-block {
+    border-radius: 10px;
+    object-fit: contain;
+    height: 400px;
 }
