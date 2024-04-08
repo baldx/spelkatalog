@@ -334,6 +334,19 @@ legend {
     display: none;
 }
 
+
+.flappy-bird-body {
+    text-align: center;
+}
+
+#board {
+    background-image: url('./assets/flappybirdbg.png');
+    margin-top: 2em;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+
 @media (max-width: 375px) {
     .links {
         font-size: 16px;
