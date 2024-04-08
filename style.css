@@ -329,3 +329,90 @@ legend {
     object-fit: contain;
     height: 400px;
 }
+
+.width-375 {
+    display: none;
+}
+
+@media (max-width: 375px) {
+    .links {
+        font-size: 16px;
+        padding-left: 0px;
+    }
+
+    .header-logo {
+        height: 100px;
+    }
+
+    .material-symbols-outlined {
+        display: none;
+    }
+
+    .game-catalog a {
+        font-size: 12px;
+    }
+
+    .game-catalog {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .support-info {
+        width: 100%;
+    }
+
+    .support-info p {
+        width: 90%;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+    }
+
+    form {
+        width: 70%;
+    }
+
+    .about-us .bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+    }
+
+    .about-us .bottom li {
+        width: 90%;
+    }
+
+    .width-375 {
+        display: block;
+        border: 2px solid var(--black);
+        width: 90%;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .restart {
+        width: 40%;
+    }
+
+    .grid {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 2em;
+    }
+
+    .rock-paper-scissors-main {
+        height: fit-content;
+    }
+
+    .selection-container {
+        flex-direction: column;
+    }
+
+    .game-feedback {
+        font-size: 20px;
+        margin-top: 1em;
+    }
+}
