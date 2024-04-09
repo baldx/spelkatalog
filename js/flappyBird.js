@@ -60,7 +60,7 @@ window.onload = function () {
 
     // Animation setup
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500); // Every 1.5 seconds
+    setInterval(placePipes, 3000); // Every 1.5 seconds
 
     // Event listener for bird movement
     document.addEventListener('keydown', moveBird);
